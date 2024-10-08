@@ -117,6 +117,15 @@ extension OutlineViewController: NSOutlineViewDataSource {
 			
 			textField.stringValue = item as! String
 			
+			if #available(macOS 11.0, *) {
+				// DelegateのisGroupItemでの表示反映がされない場合があるので、自前で対応
+				if tableCellView.textField != nil {
+					tableCellView.textField?.textColor = .secondaryLabelColor
+					tableCellView.textField?.font = .systemFont(ofSize: NSFont.smallSystemFontSize, weight: .semibold)
+					tableCellView.textField = nil // isGroupItemの表示反映なしに
+				}
+			}
+			
 			return tableCellView
 			
 		} else {

@@ -142,6 +142,10 @@ extension TableViewController: NSTableViewDataSource {
 		return self.list.count
 	}
 	
+}
+
+extension TableViewController: NSTableViewDelegate {
+	
 	func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
 		let tableRowView: TrackingTableRowView = tableView.rowView(atRow: row, makeIfNecessary: false) as! TrackingTableRowView
 		let tableCellView: NSTableCellView = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "TableCellView"), owner: nil) as! NSTableCellView
@@ -158,9 +162,6 @@ extension TableViewController: NSTableViewDataSource {
 		
 		return tableCellView
 	}
-}
-
-extension TableViewController: NSTableViewDelegate {
 	
 	func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
 		let identifier: NSUserInterfaceItemIdentifier = NSUserInterfaceItemIdentifier("TableRowView")

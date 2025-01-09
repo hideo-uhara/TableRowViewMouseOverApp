@@ -108,6 +108,18 @@ extension OutlineViewController: NSOutlineViewDataSource {
 		}
 	}
 	
+}
+
+extension OutlineViewController: NSOutlineViewDelegate {
+	
+	func outlineView(_ outlineView: NSOutlineView, isGroupItem item: Any) -> Bool {
+		if item is String {
+			return true
+		} else {
+			return false
+		}
+	}
+	
 	func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
 		
 		if item is String {
@@ -149,18 +161,6 @@ extension OutlineViewController: NSOutlineViewDataSource {
 			} else {
 				return nil
 			}
-		}
-	}
-	
-}
-
-extension OutlineViewController: NSOutlineViewDelegate {
-	
-	func outlineView(_ outlineView: NSOutlineView, isGroupItem item: Any) -> Bool {
-		if item is String {
-			return true
-		} else {
-			return false
 		}
 	}
 	
